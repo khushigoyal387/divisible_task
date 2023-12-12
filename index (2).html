@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task</title>
+</head>
+
+<body>
+<div class="box">
+    <input type="text" id="wordInput" placeholder="Enter any word">
+    <input type="number" id="numberInput" placeholder="Enter any number">
+    <button class="btn" onclick="split()">Submit</button>
+</div>
+
+<table id="result"></table>
+
+<script>
+    function split() {
+        const inputText = document.getElementById("wordInput").value;
+        const num = document.getElementById("numberInput").value;
+        const inputStore = [];
+        for (let i = 0; i < inputText.length; i += num) {
+            let string = '';
+            for (let j = 0; j < num && i + j < inputText.length; j++) {
+                string += inputText[i + j];
+            }
+            inputStore.push(string);
+        }
+        const resultTable = document.getElementById("result");
+        resultTable.innerHTML = ""; 
+
+        for (let i = 0; i < inputStore.length; i++) {
+            const row = resultTable.insertRow(i);
+            const cell = row.insertCell(0);
+            cell.textContent = inputStore[i];
+        }
+    }
+</script>
+
+</body>
+</html>
